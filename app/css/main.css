@@ -144,6 +144,14 @@ html, body {
     transition: background 500ms;
 }
 
+.table_own {
+    border-collapse: collapse;
+}
+
+.td_own {
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
 
 
 

@@ -57,7 +57,7 @@ appl.controller('MainController', ['$scope', function($scope) {
         }
         if(count===-1)
         {
-            $scope.order_details.push({name:$prod.name,quantity:$scope.products[index].likes});
+            $scope.order_details.push({name:$prod.name,quantity:$scope.products[index].likes,price:$scope.products[index].price});
         }
         else
         {
@@ -66,24 +66,23 @@ appl.controller('MainController', ['$scope', function($scope) {
         }
     };
     $scope.minusOne = function(index,$prod){
-        if($scope.products[index].likes>=1)
-            $scope.products[index].likes-=1;
+        if($scope.products[index].likes>=1) {
+            $scope.products[index].likes -= 1;
 
-        var count1=-1;
-        for(var i in $scope.order_details)
-        {
-            if($scope.order_details[i].name===$prod.name)
-            {
-                count1=i;
-                //alert("match count - "+count1);
+
+            var count1 = -1;
+            for (var i in $scope.order_details) {
+                if ($scope.order_details[i].name === $prod.name) {
+                    count1 = i;
+                    //alert("match count - "+count1);
+
+                }
+            }
+            if (count1 > -1) {
+                $scope.order_details[count1].quantity -= 1;
+                //alert("CT:(-)"+count1+"NAME: "+$scope.order_details[count1].name+" QTY: "+$scope.order_details[count1].quantity);
 
             }
-        }
-        if(count1>-1)
-        {
-            $scope.order_details[count1].quantity-=1;
-            //alert("CT:(-)"+count1+"NAME: "+$scope.order_details[count1].name+" QTY: "+$scope.order_details[count1].quantity);
-
         }
     };
     
@@ -92,11 +91,22 @@ appl.controller('MainController', ['$scope', function($scope) {
         else {
             for(var j in $scope.order_details)
             {
-                alert($scope.order_details[j].name+" "+$scope.order_details[j].quantity);
+               alert($scope.order_details[j].name+" "+$scope.order_details[j].quantity);
             }
         }
 
     };
+
+    $scope.checkout = function () {
+        if($scope.order_details.length===0){alert("make a selection first!");}
+        else {
+            return $scope.dvalue="#demo", $scope.dfvalue="demo";
+
+        }
+
+    };
+
+
 
     // logic for sending the mail to the customers!
     $scope.send_mail = function () {
@@ -158,6 +168,8 @@ appl.controller('MainController', ['$scope', function($scope) {
 
     // code for sending mail to customers ends!
 
+    $scope.contact_details=[{flat:"LGH-1202, Odalvagen 7",city:"Karlskrona, Blekinge",phone:"+46 767 85 2025",email:"aryangajvelli2011@gmail.com",briefing:"This is a premium website, we offer large buffet, hundered year old wine and mouth watering food"}];
+
 }]);
 
 //routing logic for the webpage!
@@ -168,3 +180,4 @@ appl.config(function($routeProvider)
         .when("/order",{templateUrl:"/FoodOrdering/app/views/test1.html",controller:"MainController"})
         .otherwise({redirectTo:"/"});
 });
+
