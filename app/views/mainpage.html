@@ -1,0 +1,28 @@
+<div class="container">
+
+
+    <div ng-repeat="product in products | filter:filtText" class="col-md-3" align="middle">
+        <div class="thumbnail">
+            <img ng-src="{{ product.cover }}">
+            <p class="title" align="middle">{{ product.name }}
+                <span ng-if="product.expanded" ng-click="product.expanded = false" class="fa fa-arrow-circle-up"></span>
+                <span ng-if="!product.expanded" ng-click="product.expanded = true" class="fa fa-arrow-circle-down"></span>
+            <p ng-if="product.expanded" ng-repeat-end="" align="middle">{{product.description}}</p>
+            </p>
+            <p class="price">{{ product.price | currency }}</p>
+            <!-- <p class="date" align="middle">{{ product.pubdate | date }}</p> -->
+
+            <div class="rating">
+                <p class="likes" ng-click="plusOne($index,product)">+ {{ product.likes }} </p>
+                <p class="dislikes" ng-click="minusOne($index,product)">-</p>
+            </div>
+
+        </div>
+    </div>
+    <!-- shopping cart button start
+    <button type="button" class="btn btn-default btn-sm" style="float:right;" ng-click="clicked()">
+        <span class="glyphicon glyphicon-shopping-cart"></span> Place Order
+    </button>
+    <!-- shopping cart button ends -->
+    <a href="#/porder">Place order</a>
+</div>

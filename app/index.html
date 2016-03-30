@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app="FoodApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Food beverages</title>
+    <link href="https://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto:500,300,700,400' rel='stylesheet' type='text/css'>
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/angular-route/angular-route.min.js"></script>
+
+
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <img src="img/icon.png  "/>
+        <a href="#/">
+        <h1>Food shop!</h1></a>
+    </div>
+</div>
+
+<div class="main" ng-controller="MainController">
+    <div class="container">
+        <div ng-repeat="product in products | filter:filtText" class="col-md-3" align="middle">
+                 <div class="thumbnail">
+                   <img ng-src="{{ product.cover }}">
+                   <p class="title" align="middle">{{ product.name }}
+                        <span ng-if="product.expanded" ng-click="product.expanded = false" class="fa fa-arrow-circle-up"></span>
+                        <span ng-if="!product.expanded" ng-click="product.expanded = true" class="fa fa-arrow-circle-down"></span>
+                        <p ng-if="product.expanded" ng-repeat-end="" align="middle">{{product.description}}</p>
+                   </p>
+                   <p class="price">{{ product.price | currency }}</p>
+                    <!-- <p class="date" align="middle">{{ product.pubdate | date }}</p> -->
+
+                    <div class="rating">
+                    <p class="likes" ng-click="plusOne($index,product)">+ {{ product.likes }} </p>
+                    <p class="dislikes" ng-click="minusOne($index,product)">-</p>
+                   </div>
+
+                </div>
+                </div>
+        <!-- shopping cart button start-->
+        <button type="button" class="btn btn-default btn-sm" style="float:right;" ng-click="place_order()">
+            <span class="glyphicon glyphicon-shopping-cart"></span> Place Order
+        </button>
+        <a href="#/order" style="float: right;"><span class="glyphicon glyphicon-link"></span></a>
+        <!-- shopping cart button ends -->
+   </div>
+</div>
+
+<div class="footer">
+    <div class="container">
+        <h2>Available for iPhone and Android.</h2>
+        <img src="https://s3.amazonaws.com/codecademy-content/projects/shutterbugg/app-store.png" width="120px" />
+        <img src="https://s3.amazonaws.com/codecademy-content/projects/shutterbugg/google-play.png" width="110px" />
+    </div>
+</div>
+
+
+<!-- Modules -->
+<script src="js/app.js"></script>
+
+
+<!-- Controllers -->
+
+</body>
+</html>

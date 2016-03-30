@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Simple Collapsible</h2>
+    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
+    <p id="demo" class="collapse out">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
+</div>
+<button onclick="disp()" class="btn btn-primary">Array</button>
+
+<script type="text/javascript">
+    var arr=[{x:1,y:2},{x:4,y:6},{x:9,y:3}];
+    var a1,b1,a2,b2;
+    var disp = function () {
+        for(var a in arr)
+        {
+            alert(arr[a].x);
+            if(arr[a].x===4)
+            {
+                arr[a].y-=1;
+            }
+        }
+
+        for(var b in arr)
+        {
+            alert(arr[b].y);
+
+        }
+
+
+
+
+    }
+
+</script>
+
+
+
+</body>
+</html>
